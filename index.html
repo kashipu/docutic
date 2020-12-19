@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h1>{{titulo}}</h1>
+        <!-- V - model comunicar inputs con el js -- keyup escuchar eventos del teclado -->
+        <label for="fruta_nombre">Fruta nombre</label>
+        <input type="text" v-model="fruta_nombre" name="fruta_nombre" id="fruta_nombre">
+        <label for="fruta_estado">Fruta Stock</label>
+        <input type="text" v-model="fruta_estado" name="fruta_estado" id="fruta_estado">
+        <label for="fruta_precio">Fruta Precio</label>
+        <input type="number" v-model.number="fruta_precio" name="fruta_precio" id="fruta_precio">
+        <button @click="agregarFruta">Agregar Fruta</button>
+        <ul>
+            <!-- Esto es un v-for -->
+            <li v-for="fruta of frutas">
+                {{fruta}}
+            </li>
+        </ul>
+        Esto es un v-for a un array de objetos
+        <ul>
+            <!-- Esto es un v-for -->
+            <li v-for="fruta of frutas_objetos">
+                {{fruta.nombre}} - {{fruta.estado}} - {{fruta.precio}}
+                <!-- Esto es un if con un string -->
+                <span v-if="fruta.estado === 'disponible'"> - En Stock</span>
+                <span v-if="fruta.precio === 1000">- Vale una luka </span>
+            </li>
+        </ul>
+        <h2>Total:{{sumarPrecios}}</h2>
+    </div>
+    <script src="js/index.js"></script>
+</body>
+</html>
